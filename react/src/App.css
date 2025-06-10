@@ -1,0 +1,394 @@
+/* Variables de colores */
+:root {
+  /* Azules/Turquesas */
+  --primary-blue: #37738F;
+  --light-blue: #4B7D96;
+  --medium-blue: #52849C;
+  --accent-blue: #5F98A6;
+  --bright-turquoise: #61B1BA;
+  
+  /* Verdes/Turquesas */
+  --primary-green: #56A099;
+  --light-green: #6BA7A3;
+  --medium-green: #5DAEAC;
+  --accent-green: #57AAA1;
+  --bright-green: #69B1A5;
+  
+  /* Beiges/Cremas */
+  --light-beige: #E7B7A8;
+  --medium-beige: #E8CDB8;
+  --soft-beige: #E8DAC2;
+  --cream: #E8E6CD;
+  --light-cream: #EFEDD3;
+  
+  /* Rosas claros */
+  --light-pink: #E7BAC6;
+  --soft-pink: #E9C0C5;
+  --medium-pink: #EACFC9;
+  --pale-pink: #EAD4D1;
+  --cream-pink: #E8DADB;
+  
+  /* Rosas/Corales */
+  --coral: #D47877;
+  --light-coral: #D48689;
+  --medium-coral: #D4889B;
+  --soft-coral: #D597A8;
+  --pale-coral: #D4A4B5;
+  
+  /* Rojos/Naranjas */
+  --primary-red: #C7362F;
+  --light-red: #C75C55;
+  --medium-red: #C67064;
+  --soft-red: #CB8675;
+  --pale-red: #C79591;
+}
+
+/* Reset y configuración global */
+* {
+  box-sizing: border-box;
+}
+
+/* Fondo de toda la aplicación */
+body, #root {
+  background: linear-gradient(135deg, var(--light-cream) 0%, var(--cream) 50%, var(--soft-beige) 100%) !important;
+  min-height: 100vh !important;
+  font-family: 'Roboto', 'Arial', sans-serif !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Container principal */
+.MuiContainer-root {
+  background: transparent !important;
+}
+
+/* ==================== NAVEGACIÓN ==================== */
+
+/* AppBar personalizado */
+.MuiAppBar-root {
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-green) 100%) !important;
+  box-shadow: 0 8px 32px rgba(55, 115, 143, 0.4) !important;
+  border-bottom: 3px solid var(--bright-turquoise) !important;
+}
+
+/* Título del AppBar */
+.MuiAppBar-root .MuiTypography-h6 {
+  color: white !important;
+  font-weight: 700 !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+  font-size: 1.5rem !important;
+}
+
+/* Botones en el AppBar */
+.MuiAppBar-root .MuiButton-root {
+  color: white !important;
+  border-radius: 25px !important;
+  margin: 0 8px !important;
+  padding: 8px 20px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  transition: all 0.3s ease !important;
+  border: 2px solid transparent !important;
+}
+
+/* Botón activo/outlined en AppBar */
+.MuiAppBar-root .MuiButton-outlined {
+  border-color: white !important;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* Hover en botones del AppBar */
+.MuiAppBar-root .MuiButton-root:hover {
+  background-color: rgba(255, 255, 255, 0.25) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3) !important;
+  border-color: white !important;
+}
+
+/* ==================== TÍTULOS Y TEXTOS ==================== */
+
+/* Títulos principales */
+h1, h2, h3, h4, h5, h6, 
+.MuiTypography-h1, .MuiTypography-h2, 
+.MuiTypography-h3, .MuiTypography-h4, 
+.MuiTypography-h5, .MuiTypography-h6 {
+  color: var(--primary-blue) !important;
+  font-weight: 600 !important;
+  text-shadow: 0 2px 4px rgba(55, 115, 143, 0.1) !important;
+}
+
+/* Título con icono "Menú del Día" */
+.titulo-menu-dia {
+  display: flex !important;
+  align-items: center !important;
+  margin-bottom: 32px !important;
+  padding: 20px !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(239, 237, 211, 0.9) 100%) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 24px rgba(55, 115, 143, 0.15) !important;
+  border: 2px solid var(--light-beige) !important;
+}
+
+/* ==================== CARDS DE MENÚ ==================== */
+
+/* Grid container */
+.MuiGrid-container {
+  padding: 16px !important;
+}
+
+/* Cards personalizadas */
+.MuiCard-root {
+  border-radius: 25px !important;
+  box-shadow: 0 12px 40px rgba(55, 115, 143, 0.2) !important;
+  border: 3px solid var(--light-beige) !important;
+  background: linear-gradient(145deg, #ffffff 0%, #fafafa 30%, rgba(239, 237, 211, 0.3) 100%) !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+/* Efecto hover en cards */
+.MuiCard-root:hover {
+  box-shadow: 0 20px 60px rgba(55, 115, 143, 0.35) !important;
+  transform: translateY(-12px) scale(1.03) !important;
+  border-color: var(--primary-green) !important;
+  background: linear-gradient(145deg, #ffffff 0%, rgba(239, 237, 211, 0.5) 100%) !important;
+}
+
+/* Efecto decorativo en cards */
+.MuiCard-root::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 4px !important;
+  background: linear-gradient(90deg, var(--primary-blue) 0%, var(--primary-green) 50%, var(--bright-turquoise) 100%) !important;
+}
+
+/* Contenido de las cards */
+.MuiCardContent-root {
+  padding: 28px !important;
+  position: relative !important;
+}
+
+/* ==================== ICONOS Y ELEMENTOS ==================== */
+
+/* Iconos en las cards */
+.menu-icon {
+  color: var(--primary-blue) !important;
+  font-size: 32px !important;
+  filter: drop-shadow(0 2px 4px rgba(55, 115, 143, 0.3)) !important;
+}
+
+.price-icon {
+  color: var(--bright-green) !important;
+  font-size: 28px !important;
+  filter: drop-shadow(0 2px 4px rgba(105, 177, 165, 0.3)) !important;
+}
+
+/* Precios destacados */
+.precio-menu {
+  color: var(--bright-green) !important;
+  font-weight: 800 !important;
+  text-shadow: 0 2px 8px rgba(105, 177, 165, 0.4) !important;
+  font-size: 1.8rem !important;
+}
+
+/* Chips de fecha mejorados */
+.MuiChip-root {
+  background: linear-gradient(135deg, var(--light-beige) 0%, var(--medium-beige) 100%) !important;
+  color: var(--primary-red) !important;
+  border: 2px solid var(--soft-beige) !important;
+  border-radius: 30px !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 12px rgba(231, 183, 168, 0.5) !important;
+  padding: 4px 8px !important;
+  transition: all 0.3s ease !important;
+}
+
+.MuiChip-root:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 6px 16px rgba(231, 183, 168, 0.7) !important;
+}
+
+/* ==================== BOTONES ==================== */
+
+/* Botones principales */
+.MuiButton-contained {
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%) !important;
+  border-radius: 20px !important;
+  padding: 14px 28px !important;
+  font-weight: 700 !important;
+  text-transform: none !important;
+  font-size: 1.1rem !important;
+  box-shadow: 0 8px 24px rgba(55, 115, 143, 0.4) !important;
+  transition: all 0.3s ease !important;
+  border: 2px solid transparent !important;
+}
+
+.MuiButton-contained:hover {
+  background: linear-gradient(135deg, var(--light-blue) 0%, var(--bright-turquoise) 100%) !important;
+  box-shadow: 0 12px 32px rgba(55, 115, 143, 0.6) !important;
+  transform: translateY(-3px) !important;
+  border-color: var(--primary-green) !important;
+}
+
+/* ==================== DIALOG/MODAL ==================== */
+
+/* Dialog personalizado */
+.MuiDialog-paper {
+  border-radius: 30px !important;
+  border: 4px solid var(--light-beige) !important;
+  box-shadow: 0 32px 80px rgba(55, 115, 143, 0.4) !important;
+  background: linear-gradient(145deg, #ffffff 0%, rgba(239, 237, 211, 0.8) 100%) !important;
+  overflow: hidden !important;
+}
+
+/* Título del Dialog */
+.MuiDialogTitle-root {
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--bright-green) 100%) !important;
+  color: white !important;
+  padding: 24px 32px !important;
+  margin: 0 !important;
+  font-weight: 700 !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+  border-bottom: 3px solid var(--bright-turquoise) !important;
+}
+
+/* Contenido del Dialog */
+.MuiDialogContent-root {
+  padding: 32px !important;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(239, 237, 211, 0.7) 100%) !important;
+}
+
+/* ==================== LISTAS ==================== */
+
+/* Lista en el dialog */
+.MuiListItem-root {
+  border-radius: 15px !important;
+  margin-bottom: 12px !important;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(239, 237, 211, 0.6) 100%) !important;
+  border: 2px solid var(--soft-beige) !important;
+  transition: all 0.3s ease !important;
+  padding: 16px !important;
+}
+
+.MuiListItem-root:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, var(--light-cream) 100%) !important;
+  transform: translateX(8px) !important;
+  box-shadow: 0 6px 20px rgba(55, 115, 143, 0.2) !important;
+  border-color: var(--primary-green) !important;
+}
+
+/* Texto especial para pensionados */
+.pensionado-text {
+  color: var(--coral) !important;
+  font-weight: 600 !important;
+  background: linear-gradient(135deg, rgba(212, 120, 119, 0.15) 0%, rgba(212, 151, 168, 0.15) 100%) !important;
+  padding: 6px 12px !important;
+  border-radius: 15px !important;
+  border: 1px solid var(--light-coral) !important;
+  display: inline-block !important;
+  margin-top: 4px !important;
+}
+
+/* ==================== LOADING Y ALERTS ==================== */
+
+/* Loading spinner */
+.MuiCircularProgress-root {
+  color: var(--primary-green) !important;
+}
+
+/* Alert personalizado */
+.MuiAlert-root {
+  border-radius: 20px !important;
+  border: 3px solid !important;
+  font-weight: 500 !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1) !important;
+}
+
+.MuiAlert-standardError {
+  background: linear-gradient(135deg, rgba(199, 54, 47, 0.15) 0%, rgba(199, 112, 85, 0.15) 100%) !important;
+  border-color: var(--primary-red) !important;
+  color: var(--primary-red) !important;
+}
+
+.MuiAlert-standardInfo {
+  background: linear-gradient(135deg, rgba(55, 115, 143, 0.15) 0%, rgba(97, 177, 186, 0.15) 100%) !important;
+  border-color: var(--primary-blue) !important;
+  color: var(--primary-blue) !important;
+}
+
+/* ==================== ANIMACIONES ==================== */
+
+/* Animación de entrada para cards */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.menu-card {
+  animation: fadeInUp 0.6s ease-out;
+  animation-fill-mode: both;
+}
+
+.menu-card:nth-child(1) { animation-delay: 0.1s; }
+.menu-card:nth-child(2) { animation-delay: 0.2s; }
+.menu-card:nth-child(3) { animation-delay: 0.3s; }
+.menu-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Animación para el título */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.titulo-menu-dia {
+  animation: slideInLeft 0.8s ease-out !important;
+}
+
+/* ==================== RESPONSIVE ==================== */
+
+@media (max-width: 768px) {
+  .MuiCard-root {
+    margin-bottom: 20px !important;
+  }
+  
+  .MuiCardContent-root {
+    padding: 20px !important;
+  }
+  
+  .titulo-menu-dia {
+    padding: 16px !important;
+    margin-bottom: 24px !important;
+  }
+  
+  .precio-menu {
+    font-size: 1.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .MuiDialogContent-root {
+    padding: 20px !important;
+  }
+  
+  .MuiButton-contained {
+    padding: 12px 20px !important;
+    font-size: 1rem !important;
+  }
+}

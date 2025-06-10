@@ -241,5 +241,26 @@ INSERT INTO Mesa (nombre_mesa, capacidad, ubicacion, estado_disponible) VALUES
 ('Mesa 9', 10, 'Patio', 'libre'),
 ('Mesa 10', 12, 'Patio', 'libre');
 
+-- Insertar empleados de prueba
+INSERT INTO Empleado (ci_empleado, nombre_empleado, apellido_empleado, cargo_empleado, celular_empleado) VALUES 
+('12345678', 'Juan', 'Pérez', 'administrador', '70123456'),
+('87654321', 'María', 'González', 'cajero', '70234567'),
+('11111111', 'Carlos', 'López', 'cocina', '70345678'),
+('22222222', 'Ana', 'Martínez', 'mesero', '70456789');
+
+-- Insertar usuarios empleados (password = ci_empleado)
+INSERT INTO UsuarioEmpleado (ci_empleado, password_empleado, nivel_acceso_empleado) VALUES 
+('12345678', '12345678', 'administrador'),
+('87654321', '87654321', 'cajero'),
+('11111111', '11111111', 'cocina'),
+('22222222', '22222222', 'mesero');
+
 PRINT '🍽️ Datos de prueba insertados correctamente';
 PRINT '🪑 Mesas creadas correctamente';
+PRINT '👥 Empleados de prueba creados correctamente';
+
+-- Agregar estado a cada detalle individual
+ALTER TABLE Detalle_orden_producto ADD estado_detalle VARCHAR(20) DEFAULT 'pendiente';
+ALTER TABLE Detalle_orden_menu ADD estado_detalle VARCHAR(20) DEFAULT 'pendiente';
+
+PRINT '🔧 Estados individuales agregados a los detalles de orden';

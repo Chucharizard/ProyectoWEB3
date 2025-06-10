@@ -37,6 +37,16 @@ const Layout = ({ children }) => {
               {item.label}
             </Button>
           ))}
+          
+          {/* Botón de acceso para empleados */}
+          <Button
+            color="inherit"
+            onClick={() => navigate('/login')}
+            variant="outlined"
+            sx={{ ml: 2, borderColor: 'rgba(255,255,255,0.5)' }}
+          >
+            Empleados
+          </Button>
         </Toolbar>
       </AppBar>
       <Container maxWidth="lg" sx={{ mt: 4 }}>

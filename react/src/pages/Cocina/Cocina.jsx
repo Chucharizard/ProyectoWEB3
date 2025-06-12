@@ -17,7 +17,6 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
-  Divider,
   Paper
 } from '@mui/material';
 import {
@@ -25,9 +24,7 @@ import {
   Timer,
   CheckCircle,
   PlayArrow,
-  Pause,
-  Done,
-  LocalShipping
+  Done
 } from '@mui/icons-material';
 import { ordenService } from '../../services/ordenService';
 
@@ -54,7 +51,6 @@ const Cocina = () => {
       setError(null);
     } catch (err) {
       setError('Error al cargar órdenes: ' + err.message);
-      console.error('Error:', err);
     } finally {
       setLoading(false);
     }
@@ -68,7 +64,6 @@ const Cocina = () => {
       setOpenDialog(true);
     } catch (err) {
       setError('Error al cargar detalle de orden');
-      console.error('Error:', err);
     }
   };
 
@@ -96,41 +91,41 @@ const Cocina = () => {
   };
 
   const getEstadoColor = (estado) => {
-    switch (estado) {
-      case 'pendiente': return 'error';
-      case 'preparando': return 'warning';
-      case 'listo': return 'success';
-      case 'entregado': return 'default';
-      default: return 'default';
-    }
+    const colores = {
+      'pendiente': 'error',
+      'preparando': 'warning',
+      'listo': 'success',
+      'entregado': 'default'
+    };
+    return colores[estado] || 'default';
   };
 
   const getEstadoIcon = (estado) => {
-    switch (estado) {
-      case 'pendiente': return <Timer />;
-      case 'preparando': return <PlayArrow />;
-      case 'listo': return <CheckCircle />;
-      case 'entregado': return <Done />;
-      default: return <Timer />;
-    }
+    const iconos = {
+      'pendiente': <Timer />,
+      'preparando': <PlayArrow />,
+      'listo': <CheckCircle />,
+      'entregado': <Done />
+    };
+    return iconos[estado] || <Timer />;
   };
 
   const getNextEstado = (estadoActual) => {
-    switch (estadoActual) {
-      case 'pendiente': return 'preparando';
-      case 'preparando': return 'listo';
-      case 'listo': return 'entregado';
-      default: return estadoActual;
-    }
+    const transiciones = {
+      'pendiente': 'preparando',
+      'preparando': 'listo',
+      'listo': 'entregado'
+    };
+    return transiciones[estadoActual] || estadoActual;
   };
 
   const getActionText = (estadoActual) => {
-    switch (estadoActual) {
-      case 'pendiente': return 'Iniciar';
-      case 'preparando': return 'Listo';
-      case 'listo': return 'Entregar';
-      default: return 'Completado';
-    }
+    const textos = {
+      'pendiente': 'Iniciar',
+      'preparando': 'Listo',
+      'listo': 'Entregar'
+    };
+    return textos[estadoActual] || 'Completado';
   };
 
   const cerrarDialog = () => {

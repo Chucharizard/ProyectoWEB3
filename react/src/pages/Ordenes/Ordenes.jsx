@@ -54,8 +54,8 @@ const Ordenes = () => {
   
   // Estados del carrito
   const [carrito, setCarrito] = useState({
-    productos: [], // {id_producto, nombre_producto, precio_producto, cantidad, categoria}
-    menus: [] // {id_menu, nombre_menu, precio_menu, cantidad}
+    productos: [],
+    menus: []
   });
 
   // Estados de control
@@ -136,10 +136,7 @@ const Ordenes = () => {
 
   const handleClienteChange = (e) => {
     const { name, value } = e.target;
-    setDatosCliente(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setDatosCliente(prev => ({ ...prev, [name]: value }));
     setError(null);
   };
 
@@ -156,10 +153,7 @@ const Ordenes = () => {
   };
 
   const agregarProducto = () => {
-    const producto = {
-      ...selectedItem,
-      cantidad: cantidad
-    };
+    const producto = { ...selectedItem, cantidad };
 
     setCarrito(prev => {
       const productosExistentes = [...prev.productos];
@@ -171,10 +165,7 @@ const Ordenes = () => {
         productosExistentes.push(producto);
       }
 
-      return {
-        ...prev,
-        productos: productosExistentes
-      };
+      return { ...prev, productos: productosExistentes };
     });
 
     setOpenProductDialog(false);
@@ -183,10 +174,7 @@ const Ordenes = () => {
   };
 
   const agregarMenu = () => {
-    const menu = {
-      ...selectedItem,
-      cantidad: cantidad
-    };
+    const menu = { ...selectedItem, cantidad };
 
     setCarrito(prev => {
       const menusExistentes = [...prev.menus];
@@ -198,10 +186,7 @@ const Ordenes = () => {
         menusExistentes.push(menu);
       }
 
-      return {
-        ...prev,
-        menus: menusExistentes
-      };
+      return { ...prev, menus: menusExistentes };
     });
 
     setOpenMenuDialog(false);
@@ -210,19 +195,13 @@ const Ordenes = () => {
   };
 
   const eliminarDelCarrito = (tipo, id) => {
-    setCarrito(prev => {
-      if (tipo === 'producto') {
-        return {
-          ...prev,
-          productos: prev.productos.filter(p => p.id_producto !== id)
-        };
-      } else {
-        return {
-          ...prev,
-          menus: prev.menus.filter(m => m.id_menu !== id)
-        };
-      }
-    });
+    setCarrito(prev => ({
+      ...prev,
+      [tipo === 'producto' ? 'productos' : 'menus']: 
+        prev[tipo === 'producto' ? 'productos' : 'menus'].filter(
+          item => item[tipo === 'producto' ? 'id_producto' : 'id_menu'] !== id
+        )
+    }));
   };
 
   const calcularTotal = () => {
@@ -247,14 +226,8 @@ const Ordenes = () => {
       const datosOrden = {
         ...datosCliente,
         ci_empleado: empleado.ci,
-        productos: carrito.productos.map(p => ({
-          id_producto: p.id_producto,
-          cantidad: p.cantidad
-        })),
-        menus: carrito.menus.map(m => ({
-          id_menu: m.id_menu,
-          cantidad: m.cantidad
-        })),
+        productos: carrito.productos.map(p => ({ id_producto: p.id_producto, cantidad: p.cantidad })),
+        menus: carrito.menus.map(m => ({ id_menu: m.id_menu, cantidad: m.cantidad })),
         total_orden: calcularTotal()
       };
 
@@ -275,7 +248,6 @@ const Ordenes = () => {
       
       // Recargar mesas
       cargarDatos();
-      
       setTimeout(() => setSuccess(false), 5000);
     } catch (err) {
       setError(err.message);
@@ -287,9 +259,7 @@ const Ordenes = () => {
   // Agrupar productos por categoría
   const productosPorCategoria = productos.reduce((acc, producto) => {
     const categoria = producto.nombre_categoria;
-    if (!acc[categoria]) {
-      acc[categoria] = [];
-    }
+    if (!acc[categoria]) acc[categoria] = [];
     acc[categoria].push(producto);
     return acc;
   }, {});
@@ -448,7 +418,7 @@ const Ordenes = () => {
                 variant="contained"
                 fullWidth
                 onClick={crearOrden}
-                disabled={loading || carrito.productos.length === 0 && carrito.menus.length === 0}
+                disabled={loading || (carrito.productos.length === 0 && carrito.menus.length === 0)}
                 sx={{ mt: 2 }}
               >
                 {loading ? <CircularProgress size={24} /> : 'Crear Orden'}
@@ -538,9 +508,7 @@ const Ordenes = () => {
 
       {/* Dialog para agregar producto */}
       <Dialog open={openProductDialog} onClose={() => setOpenProductDialog(false)}>
-        <DialogTitle>
-          Agregar Producto
-        </DialogTitle>
+        <DialogTitle>Agregar Producto</DialogTitle>
         <DialogContent>
           {selectedItem && (
             <Box>
@@ -577,9 +545,7 @@ const Ordenes = () => {
 
       {/* Dialog para agregar menú */}
       <Dialog open={openMenuDialog} onClose={() => setOpenMenuDialog(false)}>
-        <DialogTitle>
-          Agregar Menú
-        </DialogTitle>
+        <DialogTitle>Agregar Menú</DialogTitle>
         <DialogContent>
           {selectedItem && (
             <Box>

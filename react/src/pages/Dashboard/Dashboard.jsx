@@ -20,7 +20,7 @@ const Dashboard = () => {
       {/* Hero Section */}
       <Box sx={{ textAlign: 'center', mb: 6 }}>
         <Typography variant="h2" gutterBottom color="primary">
-          Bienvenidos a Nuestro Restaurante
+          Bienvenidos a El Sabor
         </Typography>
         <Typography variant="h5" color="text.secondary" paragraph>
           Auténtica cocina mediterránea con los mejores ingredientes frescos
@@ -67,9 +67,9 @@ const Dashboard = () => {
                 Contacto
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Teléfono: +34 123 456 789<br />
-                Email: info@restaurante.com<br />
-                Calle Mayor 123, Madrid
+                Teléfono: +591 123 456 789<br />
+                Email: info@elsabor.com<br />
+                Av. Principal 123, Santa Cruz
               </Typography>
             </CardContent>
           </Card>
